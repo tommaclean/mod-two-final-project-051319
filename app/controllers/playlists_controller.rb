@@ -34,7 +34,7 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @dj = @playlist.dj
     @playlist.destroy
     redirect_to @dj

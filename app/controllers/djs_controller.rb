@@ -33,7 +33,7 @@ class DjsController < ApplicationController
     @dj = Dj.find(params[:id])
   end
 
-  def destroy
+  def delete
     @dj = Dj.find(params[:id])
     @dj.destroy
     redirect_to login_path
