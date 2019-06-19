@@ -10,6 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+
+ @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+
+ body {
+     font-family: 'Rubik', sans-serif;
+     font-size: 12px;
+     padding-top: 7em;
+ }
+
+ h1 {
+   text-align: center
+ }

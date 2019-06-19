@@ -1,17 +1,19 @@
-<h1>Create a New Playlist</h1>
+<h1>Edit Page</h1>
 
-<ul>
 <% if flash[:errors] %>
+  <ul>
   <% flash[:errors].each do |error| %>
   <li><%= error %></li>
   <% end %>
-</ul>
-<% end %>
+  </ul>
+<% end %>  
 
-<%= form_for @playlist do |f| %>
+<%= form_for @dj do |f| %>
+<%= f.label :username %>
+<%= f.text_field :username %>
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= f.label :description %>
-<%= f.text_field :description %>
+<%= f.label :bio %>
+<%= f.text_area :bio %>
 <%= f.submit %>
 <% end %>
