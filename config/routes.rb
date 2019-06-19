@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :playlist_songs, only: [:create, :delete]
+  resources :playlist_songs, only: [:create, :destroy]
   resources :songs
-  resources :playlists, only: [:show, :new, :create, :edit, :update, :delete]
-  resources :djs, only: [:show, :new, :create, :edit, :update, :delete]
-  resources :likes, only: [:create, :delete]
+  resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :djs, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :likes, only: [:create, :destroy]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
