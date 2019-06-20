@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rspotify'
 
+gem 'mp3_player'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
