@@ -1,3 +1,12 @@
 <h1>Playlist Profile Page</h1>
 
-<%= @playlist %>
+<h3>Dj Author</h3>
+<p><%= link_to @playlist.author.name, @playlist.author %></p>
+
+<br>
+<h3>Songs</h3>
+<ul>
+<% @playlist.songs.each do |song| %>
+<li><%= song.title %> - <%= song.artist %> - <%= song.genre %> - <%= song.bpm %> </li>
+<% end %>
+</ul>

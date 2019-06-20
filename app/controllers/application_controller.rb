@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :find_dj
+  before_action :authorized?
 
   def find_dj
     @dj_id = session[:dj_id]

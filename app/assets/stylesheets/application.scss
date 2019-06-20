@@ -16,14 +16,46 @@
  @import "bootstrap";
 
  @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
 
  body {
      font-family: 'Rubik', sans-serif;
      font-size: 12px;
      padding-top: 7em;
+     margin-left: 2em;
+     color: rgb(255, 255, 255);
+     background-color: rgb(16, 13, 23);
  }
 
+ .navbar {
+   background-color: rgb(23, 18, 33);
+ }
+
+ a {
+   color: rgb(235, 83, 69);
+   opacity: 0.85;
+   transition: 0.8s linear;
+ }
+
+ a:hover, a:active {
+   text-decoration: none;
+   color: rgb(255, 138, 5)
+ }
+
+h1, h2, h3 {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+}
+
  h1 {
+   padding-bottom: 2em;
    text-align: center
+ }
+
+ h3 {
+   font-size: 18px;
+ }
+
+ p, li, a {
+   font-size: 16px;
  }

@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  skip_before_action :authorized?, only: [:index, :show, :new, :create, :edit, :udpate, :delete]
   before_action :find_playlist, only: [:show, :edit, :update, :destroy]
 
  def index

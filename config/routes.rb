@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :playlist_songs, only: [:create, :delete]
   resources :songs
   resources :playlists
-  resources :djs, only: [:show, :new, :create, :edit, :update, :delete]
+  resources :djs, only: [:show, :new, :create, :edit, :update, :destroy]
 
   root "application#welcome"
   get '/welcome/:id', to: 'application#welcome'

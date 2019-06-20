@@ -1,5 +1,9 @@
 <h1>Login</h1>
 
+<ul>
+<% if flash[:messages] %>
+  <%= flash[:messages] %>
+<% end %>
 
 <%= form_tag '/login' do %>
 <%= label_tag :username %>

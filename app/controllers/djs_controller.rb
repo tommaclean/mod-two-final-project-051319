@@ -1,4 +1,5 @@
 class DjsController < ApplicationController
+  skip_before_action :authorized?, only: [:new, :create]
 
   def new
     @dj = Dj.new
@@ -33,7 +34,7 @@ class DjsController < ApplicationController
     @dj = Dj.find(params[:id])
   end
 
-  def delete
+  def destroy
     @dj = Dj.find(params[:id])
     @dj.destroy
     redirect_to login_path
