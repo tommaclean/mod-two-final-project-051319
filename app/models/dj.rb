@@ -1,7 +1,7 @@
 class Dj < ApplicationRecord
   has_many :playlists, dependent: :destroy
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_playlists, through: :likes, source: :playlist
   after_initialize :default_info
   has_secure_password

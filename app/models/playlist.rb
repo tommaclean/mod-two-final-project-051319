@@ -1,7 +1,7 @@
 class Playlist < ApplicationRecord
   belongs_to :author, class_name: "Dj", foreign_key: :dj_id
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :djs, through: :likes
 
   has_many :playlist_songs

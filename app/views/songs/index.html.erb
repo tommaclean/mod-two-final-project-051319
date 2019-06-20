@@ -1,1 +1,44 @@
 <h1>Song Serach Results:</h1>
+
+** columns
+** users - local search 
+
+<h3>Tracks</h3>
+
+<ol>
+<% @track_results.each do |track| %>
+<li><%= track.name %> - [Artist]</li>
+<% end %>
+</ol>
+
+<br>
+
+<h3>Artists</h3>
+
+<ol>
+<% @artist_results.each do |artist| %>
+<li><%= artist.name %></li>
+<% end %>
+</ol>
+
+<br>
+
+<h3>Albums</h3>
+
+<ol>
+<% @album_results.each do |album| %>
+<li><%= album.name %> - [Artist]</li>
+<% end %>
+</ol>
+
+<br>
+
+<h3>Playlists</h3>
+
+<ol>
+<% @playlist_results.each do |playlist| %>
+<li><%= playlist.name %> - [author] - [think of adding our playlists at the top]</li>
+<% end %>
+</ol>
+
+<h3>User</h3>
