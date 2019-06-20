@@ -1,12 +1,27 @@
 <h1>Playlist Profile Page</h1>
 
+
 <h3>Dj Author</h3>
 <p><%= link_to @playlist.author.name, @playlist.author %></p>
 
 <br>
+
+
+<div class="playlist-profile-songs">
+
 <h3>Songs</h3>
-<ul>
+<ol>
 <% @playlist.songs.each do |song| %>
-<li><%= song.title %> - <%= song.artist %> - <%= song.genre %> - <%= song.bpm %> </li>
+<li><%= song.title %> - <%= song.artist %> - <%= song.genre %> <%= link_to "delete", playlist_song_path(song, @playlist) , method: :delete %></li>
 <% end %>
-</ul>
+</ol>
+</div>
+
+<h3><%= @playlist.likes.count %> Likes</h3>
+
+<% pre_like = @playlist.likes.find { |like| like.dj_id == @current_dj.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', playlist_like_path(@playlist, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', playlist_likes_path(@playlist), method: :post %>
+<% end %>
