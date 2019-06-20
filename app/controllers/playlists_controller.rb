@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  skip_before_action :authorized?, only: [:index, :show, :new, :create, :edit, :udpate, :delete]
   before_action :find_playlist, only: [:show, :edit, :update, :destroy]
 
  def index
@@ -37,7 +38,7 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @dj = @playlist.dj
     @playlist.destroy
     redirect_to @dj

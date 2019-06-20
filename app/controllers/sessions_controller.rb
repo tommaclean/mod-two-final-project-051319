@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorized?, only: [:new, :create]
+
   def new
-    #code
+
   end
 
   def create
@@ -15,7 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     logout
     redirect_to login_path
   end

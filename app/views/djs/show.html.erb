@@ -1,15 +1,19 @@
 <h1>Dj Profile Page</h1>
 
+<div class="dj-info">
+  <h3>Username</h3>
+    <p><%= @dj.username %></p>
+</div>
 
-<h3>Username</h3>
-  <p><%= @dj.username %></p>
+<div class="dj-info">
+  <h3>Name </h3>
+    <p><%= @dj.name %></p>
+</div>
 
-<h3>Name </h3>
-  <p><%= @dj.name %></p>
-
-
-<h3>Bio</h3>
-  <p><%= @dj.bio %></p>
+<div class="dj-info">    
+  <h3>Bio</h3>
+    <p><%= @dj.bio %></p>
+</div>
 
 <h2>Created Playlists</h2>
 <ol>
@@ -21,7 +25,7 @@
 <h2>Liked Playlists</h2>
 <ol>
   <% @dj.liked_playlists.each  do |playlist| %>
-  <li><%= playlist.name %></li>
+  <li><%= link_to playlist.name, playlist %></li>
   <% end %>
 </ol>
 

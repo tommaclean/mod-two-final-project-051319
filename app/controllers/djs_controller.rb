@@ -1,4 +1,5 @@
 class DjsController < ApplicationController
+  skip_before_action :authorized?, only: [:new, :create]
 
   def new
     @dj = Dj.new

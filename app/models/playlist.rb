@@ -4,7 +4,7 @@ class Playlist < ApplicationRecord
   has_many :likes
   has_many :djs, through: :likes
 
-  has_many :playlists
+  has_many :playlist_songs
   has_many :songs, through: :playlist_songs
 
   validates :name, presence:true
