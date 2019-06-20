@@ -8,6 +8,7 @@ class DjsController < ApplicationController
   def create
     @dj = Dj.create(dj_params(:username, :password))
     if @dj.valid?
+      session[:dj_id] = @dj.id
       redirect_to @dj
     else
       flash[:errors] = @dj.errors.full_messages
@@ -37,7 +38,8 @@ class DjsController < ApplicationController
   def destroy
     @dj = Dj.find(params[:id])
     @dj.destroy
-    redirect_to root_path
+    logout
+    redirect_to logout_path
   end
 
   private

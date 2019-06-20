@@ -12,8 +12,10 @@
   <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-md navbar-transparent navbar-overlay fixed-top">
-      <a class="navbar-brand" href="#">GenreFluid</a>
+    <nav class="navbar navbar-inverse navbar-expand-md fixed-top">
+      <a class="navbar-brand" href="#">GenreFluid
+        <!-- <img src="/app/assets/images/logo.jpg" width="160" height="88" alt="logo image"> -->
+      </a>
 
       <!-- Navbar Collapse button for smaller screen and phone-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "My Profile", @current_user , class: "nav-link" %>
+            <%= link_to "My Profile", @current_dj , class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Logout", "/logout", method: :delete, class: "nav-link" %>

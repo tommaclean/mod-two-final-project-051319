@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
   end
 
   def welcome
-    # @dj = Dj.find(params[:id])
     # find_dj
     @liked_playlists = @dj.liked_playlists
     @playlists = @dj.playlists

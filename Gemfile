@@ -42,6 +42,9 @@ gem 'bootstrap', '~> 4.3.1'
 #Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+
 gem 'jquery-rails'
 
+#Rails HTML Bootstrap form helper
+gem 'simple_form'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
