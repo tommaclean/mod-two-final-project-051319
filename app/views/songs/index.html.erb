@@ -1,44 +1,85 @@
 <h1>Song Serach Results:</h1>
 
-** columns
-** users - local search
-
 <h3>Tracks</h3>
-
-<ol>
-<% @track_results.each do |track| %>
-<li><%= track.name %> - [Artist]</li>
+<% if @track_results.empty? %>
+  <ol>
+  No tracks to show.
+  </ol>
+<% else %>
+  <% @track_results.each do |track| %>
+  <li><%= track.name %> - <%= track.artists.map{|a| a.name}.join(", ") %> -
+   <audio controls>
+     <source src="<%= track.preview_url %>" type="audio/mpeg">
+   Your browser does not support the audio element.
+   </audio>
+  </li>
+  <% end %>
+  </ol>
+  <br>
 <% end %>
-</ol>
 
-<br>
 
 <h3>Artists</h3>
-
-<ol>
-<% @artist_results.each do |artist| %>
-<li><%= artist.name %></li>
+<% if @artist_results.empty? %>
+  <ol>
+    No artists to show.
+  </ol>
+<% else %>
+  <% @artist_results.each do |artist| %>
+  <li><%= artist.name %></li>
+  <% end %>
+  </ol>
+  <br>
 <% end %>
-</ol>
-
-<br>
 
 <h3>Albums</h3>
-
+<% if @album_results.empty? %>
+  <ol>
+  No albums to show.
+  </ol>
+<% else %>
 <ol>
-<% @album_results.each do |album| %>
-<li><%= album.name %> - [Artist]</li>
+  <% @album_results.each do |album| %>
+<li><%= album.name %> - <%= album.artists.first.name %></li>
 <% end %>
-</ol>
-
 <br>
+</ol>
+<% end %>
 
 <h3>Playlists</h3>
 
+<h6>Local Playlists</h6>
+    <% if @playlist_results.empty? %>
+    <ol>
+      No playlists to show.
+    </ol>
+
+    <% else %>
+    <ol>
+    <li><%= @playlist_results.first.name %> // <i>created by: <%= @playlist_results.first.dj_id %></i></li>
+  <% end %>
+  </ol>
+
+<h6>Remote (Spotify) Playlists</h6>
+  <% if @spotify_playlist_results.empty? %>
+    <ol>
+      No Spotify playlists to show.
+    </ol>
+  <% else %>
 <ol>
-<% @playlist_results.each do |playlist| %>
-<li><%= playlist.name %> - [author] - [think of adding our playlists at the top]</li>
+<% @spotify_playlist_results.each do |playlist| %>
+<li><%= playlist.name %> - <i>created by: <%= playlist.owner.display_name %></i></li>
 <% end %>
 </ol>
+<br>
+<% end %>
 
 <h3>Users</h3>
+<% if @users_results.empty? %>
+<ol>
+  No users to show.
+<% else %>
+<ol>
+  <%= @users_results.first.name %> // <i>(<%= @users_results.first.username %>)</i>
+</ol>
+<% end %>
