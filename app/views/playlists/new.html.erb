@@ -1,17 +1,38 @@
 <h1>Create a New Playlist</h1>
 
-<ul>
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error| %>
-  <li><%= error %></li>
-  <% end %>
-</ul>
-<% end %>
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card rounded-0"
 
-<%= form_for @playlist do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.submit %>
-<% end %>
+    <ul>
+    <% if flash[:messages] %>
+      <li><%= flash[:messages] %></li>
+    <% end %>
+    <% if flash[:logout] %>
+      <li><%= flash[:logout] %></li>
+    <% end %>
+    </ul>
+
+    <div class="signup card-body">
+      <%= form_tag playlists_path do %>
+      <div class="form-group">
+        <label for="<%= :name %>"> name: </label>
+        <input type="name" class="form-control rounded" name="<%= "playlist[name]" %>" id="<%= :name %>">
+      </div>
+      <div class="form-group">
+        <label for="<%= :description %>"> description: </label>
+        <input type="description" class="form-control rounded" name="playlist[description]" id="<%= :description %>">
+      </div>
+      <br>
+      <div class="form-group text-center">
+      <%= submit_tag "Create" , class: "btn btn-outline-danger"%>
+      </div>
+      <% end %>
+
+      </div>
+    </div>
+
+
+
+    </div>
+  </div>

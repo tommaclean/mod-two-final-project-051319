@@ -8,16 +8,6 @@
   </ul>
 <% end %>
 
-<%# <%= form_for @dj do |f| %>
-<%= f.label :username %>
-<%= f.text_field :username %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :bio %>
-<%= f.text_area :bio %>
-<%= f.submit %>
-<% end %> %>
-
 <div class="container">
   <div class="d-flex justify-content-center h-100">
     <div class="card rounded-0"
@@ -32,7 +22,7 @@
     </ul>
 
     <div class="signup card-body">
-      <%= form_tag (@dj, method: :put) do %>
+      <%= form_tag(@dj, method: :put) do %>
       <div class="form-group">
         <label for="<%= :username %>"> username: </label>
         <input type="username" value="<%= @dj.username %>" class="form-control rounded" name="username" id="<%= :username %>">
@@ -54,9 +44,5 @@
       </div>
     </div>
 
-
-
     </div>
   </div>
-
-</div>
