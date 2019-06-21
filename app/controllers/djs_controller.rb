@@ -6,7 +6,7 @@ class DjsController < ApplicationController
   end
 
   def create
-    @dj = Dj.create(dj_params(:username, :password))
+    @dj = Dj.create(username: params[:username], password: params[:password])
     if @dj.valid?
       session[:dj_id] = @dj.id
       redirect_to @dj
