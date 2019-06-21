@@ -14,8 +14,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @dj =
-    @playlist = Playlist.create(playlist_params(:name, :description, dj_id: @current_user.id))
+    @playlist = @current_dj.playlists.create(playlist_params(:name, :description))
     if @playlist.valid?
       redirect_to @playlist
     else
@@ -25,11 +24,13 @@ class PlaylistsController < ApplicationController
   end
 
   def edit
-
+    if @playlist.author.id != @current_dj.id
+      redirect_to @playlist
+    end
   end
 
   def update
-    @playlist.update(dj_params(:name, :description))
+    @playlist.update(playlist_params(:name, :description))
     if @playlist.valid?
       redirect_to @playlist
     else
@@ -38,8 +39,8 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def delete
-    @dj = @playlist.dj
+  def destroy
+    @dj = Dj.find(@current_dj.id)
     @playlist.destroy
     redirect_to @dj
   end
@@ -50,8 +51,14 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
   end
 
+  def is_visitor_user?
+    if @playlist.author.id == @current_dj.id
+      return true
+    end
+  end
+
   def playlist_params(*args)
-    params.require(:dj).permit(*args)
+    params.require(:playlist).permit(*args)
   end
 
 

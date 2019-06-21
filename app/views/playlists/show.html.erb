@@ -1,27 +1,57 @@
-<h1>Playlist Profile Page</h1>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-3">
+
+      <h3>Dj Author</h3>
+      <p><%= link_to @playlist.author.name, @playlist.author %></p>
+
+      <h3>Description</h3>
+      <p><%= @playlist.description %> </p>
+
+      <br>
+
+      <h5><%= @playlist.likes.count %>
+      <% pre_like = @playlist.likes.find { |like| like.dj_id == @current_dj.id} %>
+      <% if pre_like %>
+        <%= link_to raw("#{fa_icon "times"}"), playlist_like_path(@playlist, pre_like), method: :delete %>
+      <% else %>
+        <%= link_to raw("#{fa_icon "heart"}"), playlist_likes_path(@playlist), method: :post %>
+      <% end %>
+      </h5>
+
+      <br>
+      <br>
+      <br>
+
+      <% if @playlist.author.id == @current_dj.id %>
+      <ul>
+        <li><%= link_to "edit info", edit_playlist_path , method: :get, class:"profile-link"%></li>
+        <li><%= link_to "delete", playlist_path , method: :delete, class:"profile-link"%></li>
+      </ul>
+      <% end %>
+
+  </div>
+
+    <div class="col-8 ">
+      <div class="playlist-profile-songs">
+        <h1><%= @playlist.name %> <%= fa_icon "music" %></h1>
 
 
-<h3>Dj Author</h3>
-<p><%= link_to @playlist.author.name, @playlist.author %></p>
+      <h3>Songs</h3>
+      <% if @playlist.songs.empty? %>
+      <p>No songs yet..................
+        <% if @playlist.author.id == @current_dj.id  %>
+        <br>try typing something in the <strong>search bar</strong>.</p>
+        <% end %>
+      <% else %>
+        <ol>
+        <% @playlist.songs.each do |song| %>
+        <li><%= song.title %> - <%= song.artist %> - <%= song.genre %> <%= link_to raw("- #{fa_icon "times"}"), playlist_song_path(song, @playlist) , method: :delete %></li>
+        <% end %>
+        </ol>
+      <% end %>
+      </div>
 
-<br>
-
-
-<div class="playlist-profile-songs">
-
-<h3>Songs</h3>
-<ol>
-<% @playlist.songs.each do |song| %>
-<li><%= song.title %> - <%= song.artist %> - <%= song.genre %> <%= link_to "delete", playlist_song_path(song, @playlist) , method: :delete %></li>
-<% end %>
-</ol>
-</div>
-
-<h3><%= @playlist.likes.count %> Likes</h3>
-
-<% pre_like = @playlist.likes.find { |like| like.dj_id == @current_dj.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', playlist_like_path(@playlist, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', playlist_likes_path(@playlist), method: :post %>
-<% end %>
+      </div>
+    </div>

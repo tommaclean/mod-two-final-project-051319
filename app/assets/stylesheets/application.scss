@@ -14,6 +14,7 @@
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
+ @import "font-awesome";
 
  @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
@@ -21,7 +22,7 @@
  body {
      font-family: 'Rubik', sans-serif;
      font-size: 12px;
-     padding-top: 7em;
+     padding-top: 10em;
      margin-left: 2em;
      margin-right: 2em;
      color: rgb(255, 255, 255);
@@ -30,6 +31,18 @@
 
  .navbar {
    background-color: rgb(23, 18, 33);
+ }
+
+ a.nav-link {
+   font-weight: bold;
+ }
+
+ .form-control {
+   height: 2em;
+ }
+
+ .btn {
+   padding: .25em .75em;
  }
 
  a {
@@ -43,7 +56,7 @@
    color: rgb(255, 138, 5)
  }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
@@ -59,6 +72,7 @@ h1, h2, h3 {
 
  p, li, a {
    font-size: 16px;
+   font-family: 'PT Sans', sans-serif;
  }
 
  .card-body {
@@ -68,9 +82,26 @@ h1, h2, h3 {
 
  .dj-info {
    grid-row: 2;
-   background-color: rgb(255, 138, 5);
+   background-color: rgb(23, 18, 33);
+   border-style: solid;
+   border-color: rgb(255, 138, 5);
    margin-bottom: 6em;
    padding-top: 2em;
    padding-bottom: 2em;
    text-align: center;
  }
+
+ a.profile-link {
+   color: 	rgb(211, 135, 49);
+ }
+
+.col-sm-3 {
+  background-color: rgb(23, 18, 33);
+  padding-top: 5em;
+  padding-bottom: 100em;
+  padding-right: 0px;
+}
+
+.col-8 {
+  padding-left: 3em;
+}

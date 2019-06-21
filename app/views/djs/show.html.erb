@@ -1,47 +1,56 @@
-<h1>Dj Profile Page</h1>
+<h1>Dj <%= @dj.username %></h1>
 
 <div class="dj-info container rounded col-4">
   <div class="col align-self-center">
 
-  <div class="dj-info-item">
-    <h3>Username</h3>
-      <p><%= @dj.username %></p>
-  </div>
+    <!-- <div class="dj-info-item">
+      <h3>Username</h3>
+        <p><%= @dj.username %></p>
+    </div> -->
 
-  <div class="dj-info-item">
-    <h3>Name </h3>
-      <p><%= @dj.name %></p>
-  </div>
+    <div class="dj-info-item">
+      <h3>Name </h3>
+        <p><%= @dj.name %></p>
+    </div>
 
-  <div class="dj-info-item">
-    <h3>Bio</h3>
-      <p><%= @dj.bio %></p>
+    <div class="dj-info-item">
+      <h3>Bio</h3>
+        <p><%= @dj.bio %></p>
+    </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+
+    <div class="col-9">
+
+      <h2>Created Playlists</h2>
+      <ol>
+        <% @dj.playlists.each do |playlist| %>
+          <li><%= link_to playlist.name, playlist %></li>
+        <% end %>
+      </ol>
+      <ul>
+      <li><%= link_to "Create New Playlist", new_playlist_path, class: "profile-link" %></li>
+      </ul>
+      <h2>Liked Playlists</h2>
+      <ol>
+        <% @dj.liked_playlists.each  do |playlist| %>
+          <li><%= link_to playlist.name, playlist %></li>
+        <% end %>
+      </ol>
+    </div>
+
+    <% if @current_dj.id == @dj.id %>
+    <div class="col-auto">
+      <h4>Settings</h4>
+      <ul>
+        <li><%= link_to "edit info", edit_dj_path , class:"profile-link"%></li>
+        <li><%= link_to "delete profile", @dj, method: :delete , class:"profile-link" %></li>
+      </ul>
+    </div>
+    <% end %>
+
+  </div>
 </div>
-
-<h2>Created Playlists</h2>
-<ol>
-  <% @dj.playlists.each do |playlist| %>
-  <li><%= link_to playlist.name, playlist %></li>
-  <% end %>
-</ol>
-
-<h2>Liked Playlists</h2>
-<ol>
-  <% @dj.liked_playlists.each  do |playlist| %>
-  <li><%= link_to playlist.name, playlist %></li>
-  <% end %>
-</ol>
-
-
-<br>
-
-<h2></h2>
-
-<h4>Actions Must be Taken:</h4>
-<ul>
-  <li><%= link_to "edit info", edit_dj_path %></li>
-  <li><%= link_to "delete profile", @dj, method: :delete  %></li>
-</ul>

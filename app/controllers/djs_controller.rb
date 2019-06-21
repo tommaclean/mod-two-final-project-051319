@@ -1,5 +1,6 @@
 class DjsController < ApplicationController
   skip_before_action :authorized?, only: [:new, :create]
+  before_action :find_page_dj, only: [:show, :edit, :update, :destroy]
 
   def new
     @dj = Dj.new
@@ -17,12 +18,13 @@ class DjsController < ApplicationController
   end
 
   def edit
-    @dj = Dj.find(params[:id])
+    if @dj.id != @current_dj.id
+      redirect_to @dj
+    end
   end
 
   def update
-    @dj = Dj.find(params[:id])
-    @dj.update(dj_params(:username, :name, :bio))
+    @dj.update(username: params[:username], name: params[:name], bio: params[:bio])
     if @dj.valid?
       redirect_to @dj
     else
@@ -32,11 +34,9 @@ class DjsController < ApplicationController
   end
 
   def show
-    @dj = Dj.find(params[:id])
   end
 
   def destroy
-    @dj = Dj.find(params[:id])
     @dj.destroy
     logout
     redirect_to logout_path
@@ -47,4 +47,9 @@ class DjsController < ApplicationController
   def dj_params(*args)
     params.require(:dj).permit(*args)
   end
+
+  def find_page_dj
+    @dj = Dj.find(params[:id])
+  end
+
 end

@@ -13,8 +13,8 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-inverse navbar-expand-md fixed-top">
-      <a class="navbar-brand" href="#">GenreFluid
-        <!-- <img src="/app/assets/images/logo.jpg" width="160" height="88" alt="logo image"> -->
+      <a class="navbar-brand" href="#">
+        <img src="https://i.imgur.com/6AoFSTJ.jpg" width="80" height="50" class="img-thumbnail" alt="logo image">
       </a>
 
       <!-- Navbar Collapse button for smaller screen and phone-->
@@ -42,7 +42,7 @@
           <!-- <a href=""class="btn btn-outline-danger btn-sm my-2 my-sm-0" type="submit">Search</button> -->
           <div class="form-inline my-1 ">
           <%= form_tag songs_path, method: "get" do %>
-            <%= text_field_tag(:search_term, "", class: "form-control") %>
+            <%= text_field_tag(:search_term, "", class: "form-control input-sm") %>
           <%= submit_tag "search", class: "btn btn-outline-danger mr-2" %>
           <% end %>
           </div>

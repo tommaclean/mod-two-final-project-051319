@@ -1,1 +1,39 @@
 <h1>Edit Playlist Page</h1>
+
+
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card rounded-0"
+
+    <ul>
+    <% if flash[:messages] %>
+      <li><%= flash[:messages] %></li>
+    <% end %>
+    <% if flash[:logout] %>
+      <li><%= flash[:logout] %></li>
+    <% end %>
+    </ul>
+
+    <div class="signup card-body">
+      <%= form_tag(playlist_path, method: :put) do %>
+      <div class="form-group">
+        <label for="<%= :name %>"> name: </label>
+        <input type="name" value="<%= @playlist.name %>" class="form-control rounded" name="<%= "playlist[name]" %>" id="<%= :name %>">
+      </div>
+      <div class="form-group">
+        <label for="<%= :description %>"> description: </label>
+        <input type="description" value="<%= @playlist.description %>" class="form-control rounded" name="playlist[description]" id="<%= :description %>">
+      </div>
+      <br>
+      <div class="form-group text-center">
+      <%= submit_tag "Update" , class: "btn btn-outline-danger"%>
+      </div>
+      <% end %>
+
+      </div>
+    </div>
+
+
+
+    </div>
+  </div>
