@@ -6,9 +6,9 @@
   <li><%= error %></li>
   <% end %>
   </ul>
-<% end %>  
+<% end %>
 
-<%= form_for @dj do |f| %>
+<%# <%= form_for @dj do |f| %>
 <%= f.label :username %>
 <%= f.text_field :username %>
 <%= f.label :name %>
@@ -16,4 +16,47 @@
 <%= f.label :bio %>
 <%= f.text_area :bio %>
 <%= f.submit %>
-<% end %>
+<% end %> %>
+
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card rounded-0"
+
+    <ul>
+    <% if flash[:messages] %>
+      <li><%= flash[:messages] %></li>
+    <% end %>
+    <% if flash[:logout] %>
+      <li><%= flash[:logout] %></li>
+    <% end %>
+    </ul>
+
+    <div class="signup card-body">
+      <%= form_tag (@dj, method: :put) do %>
+      <div class="form-group">
+        <label for="<%= :username %>"> username: </label>
+        <input type="username" value="<%= @dj.username %>" class="form-control rounded" name="username" id="<%= :username %>">
+      </div>
+      <div class="form-group">
+        <label for="<%= :name %>"> name: </label>
+        <input type="name" value="<%= @dj.name %>" class="form-control rounded" name="name" id="<%= :name %>">
+      </div>
+      <div class="form-group">
+        <label for="<%= :bio %>"> bio: </label>
+        <input type="bio" value="<%= @dj.bio %>" class="form-control rounded" name="bio" id="<%= :bio %>">
+      </div>
+      <br>
+      <div class="form-group text-center">
+      <%= submit_tag "Update" , class: "btn btn-outline-danger"%>
+      </div>
+      <% end %>
+
+      </div>
+    </div>
+
+
+
+    </div>
+  </div>
+
+</div>
