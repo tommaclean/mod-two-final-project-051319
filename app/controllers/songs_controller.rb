@@ -14,8 +14,12 @@ class SongsController < ApplicationController
       @album_results = album_search.map.take(4)  { |album| {title: album.name, artist: album.artists.first.name}}
       # Playlist search results
       playlists_search = RSpotify::Playlist.search(params[:search_term])
-      @playlist_results = playlists_search.map.take(4) { |playlist| {name: playlist.name, author: playlist.owner.display_name}}
-
+      @spotify_playlist_results = playlists_search.map.take(4) { |playlist| {name: playlist.name, author: playlist.owner.display_name}}
+      # Local playlists
+      @playlist_results = Playlist.where('name LIKE ?', "%#{params[:search_term]}%")
+      # User search results
+      @users_results = Dj.where('username LIKE ?', "%#{params[:search_term]}%")
+      # byebug
     else
       redirect_to playlists_path
     end

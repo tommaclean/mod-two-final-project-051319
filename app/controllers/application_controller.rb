@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authorized?
 
   def find_dj
+    # session[:dj_id] = nil      
     @dj_id = session[:dj_id]
     @logged_in = !!@dj_id
     if @logged_in
