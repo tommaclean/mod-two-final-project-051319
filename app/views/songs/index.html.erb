@@ -1,4 +1,4 @@
-<h1>Song Serach Results:</h1>
+<h1>Search Results:</h1>
 
 <h3>Tracks</h3>
 <% if @track_results.empty? %>
@@ -7,16 +7,30 @@
   </ol>
 <% else %>
   <% @track_results.each do |track| %>
-  <li><%= track.name %> - <%= track.artists.map{|a| a.name}.join(", ") %> -
-   <audio controls>
-     <source src="<%= track.preview_url %>" type="audio/mpeg">
-   Your browser does not support the audio element.
-   </audio>
+  <li class="song-li">
+    <%= track.name %> - <%= track.artists.map{|a| a.name}.join(", ") %>
+     <audio controls>
+       <source src="<%= track.preview_url %>" type="audio/mpeg">
+     Your browser does not support the audio element.
+     </audio>
+
   </li>
   <% end %>
   </ol>
   <br>
 <% end %>
+
+<br>
+
+<h3>Add A Song</h3>
+
+<%= form_for @playlist_song, method: :post do |f| %>
+<%= f.label :song_id, "" %>
+<%= f.collection_select :song_id, @songs, :id, :title, class: "form-control" %> <br>
+<%= f.submit "Add Song to Playlist", class: "btn btn-outline-danger"%>
+<% end %>
+
+<br>
 
 
 <h3>Artists</h3>
@@ -56,7 +70,7 @@
 
     <% else %>
     <ol>
-    <li><%= @playlist_results.first.name %> // <i>created by: <%= @playlist_results.first.dj_id %></i></li>
+    <li><%= link_to @playlist_results.first.name, @playlist_results.first %> // <i>created by: <%= link_to @playlist_results.first.author.username, @playlist_results.first.author %></i></li>
   <% end %>
   </ol>
 
@@ -80,6 +94,6 @@
   No users to show.
 <% else %>
 <ol>
-  <%= @users_results.first.name %> // <i>(<%= @users_results.first.username %>)</i>
+  <%= link_to @users_results.first.name, @users_results.first %> // <i>(<%= link_to @users_results.first.username, @users_results.first %>)</i>
 </ol>
 <% end %>

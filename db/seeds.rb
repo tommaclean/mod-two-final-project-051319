@@ -29,11 +29,11 @@ Like.create(dj_id: tess.id, playlist_id: friday.id)
 Like.create(dj_id: questlove.id, playlist_id: mellomoodz.id)
 Like.create(dj_id: questlove.id, playlist_id: sadvibez.id)
 
-drake_song = Song.create(title: "Money in the Grave", artist: "Drake", genre: "Hip Hop")
-taylor_song = Song.create(title: "You Need to Calm Down", artist: "Taylor Swift", genre: "Pop")
-billie_song = Song.create(title: "bad guy ", artist: "billie ellish", genre: "teen pop")
-lizzo_song = Song.create(title: "Truth Hurts", artist: "Lizzo", genre: "Hip Hop")
-lil_nas_song = Song.create(title: "Old Town Road (Remix)", artist: "Lil' Nas X (feat. Billy Ray Cyrus)", genre: "Hip Hop")
+drake_song = Song.create(title: "Money in the Grave", artist: "Drake")
+taylor_song = Song.create(title: "You Need to Calm Down", artist: "Taylor Swift")
+billie_song = Song.create(title: "bad guy ", artist: "billie ellish")
+lizzo_song = Song.create(title: "Truth Hurts", artist: "Lizzo")
+lil_nas_song = Song.create(title: "Old Town Road (Remix)", artist: "Lil' Nas X (feat. Billy Ray Cyrus)")
 
 PlaylistSong.create([
   {playlist_id: friday.id, song_id: drake_song.id},

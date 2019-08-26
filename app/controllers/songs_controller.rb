@@ -4,8 +4,16 @@ class SongsController < ApplicationController
     if !params[:search_term].empty?
       RSpotify.authenticate("a1e5a4bb89144addae8adeaf3ef07f01", "b786b2ff6ab94053bb52c3bb95a591bb")
       # Track search results
-      track_search = RSpotify::Track.search(params[:search_term])
+      track_search =  (params[:search_term])
       @track_results = track_search.map.take(4)  { |track| {name: track.name, artists: track.artists.map{|a| a.name}, preview: track.preview_url, bpm: track.artists.map {|a| a.audio_features.tempo} }}
+
+      @track_results.each do |track|
+        Song.create(title: track.name, artist: track.artists.first.name) unless Song.find_by(title: track.name, artist: track.artists.first.name) != nil
+      end
+
+      @songs = Song.all[Song.all.size-4, 4]
+
+      @playlist_song = PlaylistSong.new
       # Artist search results
       artist_search = RSpotify::Artist.search(params[:search_term])
       @artist_results = artist_search.map.take(4)  { |artist| artist.name }
@@ -20,6 +28,7 @@ class SongsController < ApplicationController
       # User search results
       @users_results = Dj.where('username LIKE ?', "%#{params[:search_term]}%")
       # byebug
+
     else
       redirect_to playlists_path
     end

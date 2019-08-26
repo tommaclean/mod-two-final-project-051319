@@ -47,7 +47,7 @@
       <% else %>
         <ol>
         <% @playlist.songs.each do |song| %>
-        <li><%= song.title %> - <%= song.artist %> - <%= song.genre %> <%= link_to raw("- #{fa_icon "times"}"), playlist_song_path(song, @playlist) , method: :delete %></li>
+        <li><%= song.title %> - <%= song.artist %> <%= link_to raw("- #{fa_icon "times"}"), playlist_song_path(song, @playlist) , method: :delete %></li>
         <% end %>
         </ol>
       <% end %>
